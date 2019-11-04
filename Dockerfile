@@ -80,8 +80,24 @@ WORKDIR /app
 
 RUN chmod +x main.sh
 
+WORKDIR /app/research
+
+RUN protoc object_detection/protos/*.proto --python_out=.
+
+RUN pip install pillow
+
+RUN pip uninstall tensorflow -y
+
+RUN pip install tensorflow==1.5.0
+
+WORKDIR /
+
+RUN cp -R  ssdlite_mobilenet_v2_coco_2018_05_09 /app/research/object_detection/
+
+EXPOSE 5555
 EXPOSE 80
 EXPOSE 5900
+
 
 #ENTRYPOINT ["./main.sh"]
     
