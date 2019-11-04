@@ -12,7 +12,7 @@ import os
 import tensorflow as tf
 
 import sys
-sys.path.append('.')
+sys.path.append('./')
 from imagezmq import imagezmq
 
 # construct the argument parser and parse the arguments
